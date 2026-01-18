@@ -8,12 +8,6 @@
 import SwiftUI
 
 struct MissionView: View {
-    
-    struct Input: Hashable {
-        let mission: Mission
-        let astronauts: [String: Astronaut]
-    }
-    
     struct CrewMember: Hashable {
         let role: String
         let astronaut: Astronaut

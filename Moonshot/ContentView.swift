@@ -20,9 +20,7 @@ struct ContentView: View {
                 if gridShowItems {
                     LazyVGrid(columns: columns) {
                         ForEach(missions) { mission in
-                            NavigationLink{
-                                MissionView(mission: mission, astronauts: astronauts)
-                            } label: {
+                            NavigationLink(value: mission) {
                                 VStack {
                                     Image(mission.image)
                                         .resizable()
@@ -54,9 +52,7 @@ struct ContentView: View {
                     .padding([.horizontal, .bottom])
                 } else {
                     ForEach(missions) { mission in
-                        NavigationLink{
-                            MissionView(mission: mission, astronauts: astronauts)
-                        } label: {
+                        NavigationLink(value: mission)  {
                             HStack {
                                 Image(mission.image)
                                     .resizable()
@@ -93,6 +89,9 @@ struct ContentView: View {
                         gridShowItems.toggle()
                     }
                 }
+            }
+            .navigationDestination(for: Mission.self) { mission in
+                MissionView(mission: mission, astronauts: astronauts)
             }
         }
     }
